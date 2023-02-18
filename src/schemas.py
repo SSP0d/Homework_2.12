@@ -1,12 +1,14 @@
-from datetime import datetime
+from datetime import date, datetime
 
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field
+# from pydantic import BaseModel, Field, EmailStr
 
 
 class ContactModel(BaseModel):
     name: str = Field(min_length=2, max_length=20)
     surname: str = Field(min_length=2, max_length=20)
-    email: EmailStr
+    email: str = Field(min_length=6, max_length=50)
+    # email: EmailStr
     phone: str = Field(min_length=6, max_length=20)
     birthday: date
     description: str = Field(min_length=3, max_length=250)
@@ -21,14 +23,16 @@ class ContactResponse(ContactModel):
 
 class UserModel(BaseModel):
     username: str = Field(min_length=5, max_length=50)
-    email: EmailStr
+    email: str = Field(min_length=6, max_length=50)
+    # email: EmailStr
     password: str = Field(min_length=6, max_length=255)
 
 
 class UserDb(BaseModel):
     id: int
     username: str = Field(min_length=5, max_length=50)
-    email: EmailStr
+    email: str = Field(min_length=6, max_length=50)
+    # email: EmailStr
     created_at: datetime
 
     class Config:
