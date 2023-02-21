@@ -11,7 +11,7 @@ from src.repository import users as repository_users
 
 class Auth:
     pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-    SECRET_KEY = "secret_key"
+    SECRET_KEY = "secret_key_is_random_string"
     ALGORITHM = "HS256"
     oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
